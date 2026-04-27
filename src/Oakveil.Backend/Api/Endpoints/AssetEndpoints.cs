@@ -32,7 +32,16 @@ public static class AssetEndpoints
             return Results.BadRequest(new { error = "multipart/form-data required" });
         }
 
-        var form = await request.ReadFormAsync(ct);
+        IFormCollection form;
+        try
+        {
+            form = await request.ReadFormAsync(ct);
+        }
+        catch (InvalidDataException)
+        {
+            return Results.BadRequest(new { error = "invalid multipart form data" });
+        }
+
         var file = form.Files.FirstOrDefault();
         if (file is null)
         {
@@ -63,7 +72,16 @@ public static class AssetEndpoints
             return Results.BadRequest(new { error = "multipart/form-data required" });
         }
 
-        var form = await request.ReadFormAsync(ct);
+        IFormCollection form;
+        try
+        {
+            form = await request.ReadFormAsync(ct);
+        }
+        catch (InvalidDataException)
+        {
+            return Results.BadRequest(new { error = "invalid multipart form data" });
+        }
+
         var file = form.Files.FirstOrDefault();
         if (file is null)
         {

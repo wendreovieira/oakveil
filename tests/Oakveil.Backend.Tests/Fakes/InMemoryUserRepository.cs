@@ -5,20 +5,29 @@ namespace Oakveil.Backend.Tests.Fakes;
 
 public sealed class InMemoryUserRepository : IUserRepository
 {
-    private readonly UserDefinition _user = new()
+    private readonly Dictionary<string, UserDefinition> _users = new(StringComparer.OrdinalIgnoreCase)
     {
-        Email = "wendreo",
-        PasswordHash = BCrypt.Net.BCrypt.HashPassword("140718"),
-        Roles = ["Admin", "Editor", "Viewer"]
+        ["wendreo"] = new UserDefinition
+        {
+            Email = "wendreo",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("140718"),
+            Roles = ["Admin", "Editor", "Viewer"]
+        },
+        ["viewer"] = new UserDefinition
+        {
+            Email = "viewer",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("140718"),
+            Roles = ["Viewer"]
+        }
     };
 
     public Task<UserDefinition?> GetByEmailAsync(string email, CancellationToken cancellationToken)
     {
-        if (!string.Equals(email, _user.Email, StringComparison.OrdinalIgnoreCase))
+        if (!_users.TryGetValue(email, out var user))
         {
             return Task.FromResult<UserDefinition?>(null);
         }
 
-        return Task.FromResult<UserDefinition?>(_user);
+        return Task.FromResult<UserDefinition?>(user);
     }
 }
