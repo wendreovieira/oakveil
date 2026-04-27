@@ -6,22 +6,28 @@ namespace Oakveil.Shared.Definitions;
 public class ItemDefinition : DefinitionBase
 {
     public ItemType Type { get; set; }
-    
+
     // Visuals
-    public required SpriteRef Sprite { get; set; }
-    public SpriteRef? WorldSprite { get; set; }
-    public SpriteRef? EquippedSprite { get; set; }
-    
+    public Guid? TextureId { get; set; }
+    public Guid? AnimationId { get; set; }
+
+    /// sprite no chão / no mundo
+    public Guid? WorldTextureId { get; set; }
+    public Guid? WorldAnimationId { get; set; }
+
+    /// sprite equipado (arma/chapéu/etc)
+    public Guid? EquippedSkinId { get; set; }
+
     // Stack
     public bool Stackable { get; set; }
     public int MaxStack { get; set; } = 1;
-    
+
     // Economy
     public bool Tradable { get; set; } = true;
     public bool Droppable { get; set; } = true;
     public bool Destroyable { get; set; } = true;
     public int Value { get; set; }
-    
+
     // Consumable
     public bool IsConsumable { get; set; }
 
@@ -37,7 +43,7 @@ public class ItemDefinition : DefinitionBase
     // Optional combat
     public int AttackRange { get; set; } = 1;
     public int AttackSpeedMs { get; set; } = 2400;
-    
-    // Optional metadata
-    public Dictionary<string, string> Metadata { get; set; } = [];
+
+    // Semantic tags
+    public List<string> Tags { get; set; } = [];
 }
