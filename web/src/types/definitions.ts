@@ -6,11 +6,21 @@ export const definitionTypes = [
   'item',
   'quest',
   'riganimation',
+  'skeleton',
   'skin',
   'slot',
   'texture',
   'uv',
-  'uvvariant'
+  'uvanimationspritesheet',
+  'spritesheetanimation',
+  'npc',
+  'enemy',
+  'biome',
+  'house',
+  'object',
+  'road',
+  'language',
+  'sound'
 ] as const
 
 export type DefinitionType = (typeof definitionTypes)[number]

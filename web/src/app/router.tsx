@@ -13,6 +13,7 @@ import { CharacterSkinEditorPage } from '@/pages/editors/character-skin-editor-p
 import { RigAnimationEditorPage } from '@/pages/editors/rig-animation-editor-page'
 import { GraphEditorPage } from '@/pages/editors/graph-editor-page'
 import { QuestEditorPage } from '@/pages/editors/quest-editor-page'
+import { SlotsPage } from '@/pages/slots/slots-page'
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: 'editors/quest',
         element: <QuestEditorPage />
+      },
+      {
+        path: 'slots',
+        element: <SlotsPage />
       }
     ]
   }

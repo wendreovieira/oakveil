@@ -8,8 +8,10 @@ import {
   House,
   Box,
   Route,
+  Bone,
   Layers,
   Play,
+  Shirt,
   ScrollText,
   Globe,
   Volume2,
@@ -49,8 +51,10 @@ const navGroups: NavGroup[] = [
   {
     label: 'Rigging',
     items: [
-      { icon: Layers, label: 'Slots', to: '/definitions/slot' },
-      { icon: Play, label: 'Animations', to: '/editors/riganimation' },
+      { icon: Bone, label: 'Skeletons', to: '/definitions/skeleton' },
+      { icon: Layers, label: 'Slots', to: '/slots' },
+      { icon: Shirt, label: 'Skins', to: '/definitions/skin' },
+      { icon: Play, label: 'Animations', to: '/definitions/animation' },
     ],
   },
   {

@@ -5,6 +5,7 @@ namespace Oakveil.Shared.Definitions;
 
 public class SlotDefinition : DefinitionBase
 {
+    public required Guid SkeletonId { get; set; }
     public SlotType Type { get; set; }
     public Guid? ParentSlotId { get; set; }
     public Vector2 LocalPosition { get; set; }
