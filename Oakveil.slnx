@@ -1,5 +1,8 @@
 <Solution>
   <Folder Name="/src/" />
+  <Folder Name="/src/Backend/">
+    <Project Path="src/Oakveil.Backend/Oakveil.Backend.csproj" />
+  </Folder>
   <Folder Name="/src/Engine/" />
   <Folder Name="/src/Oakveil/">
     <Project Path="src/Oakveil.Shared/Oakveil.Shared.csproj" />
