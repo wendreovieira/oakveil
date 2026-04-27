@@ -16,9 +16,10 @@ type Props = {
   onChange: (result: TextureResult | null) => void
   folder?: string
   className?: string
+  showTags?: boolean
 }
 
-export function TextureUpload({ value, onChange, folder = 'textures', className }: Props) {
+export function TextureUpload({ value, onChange, folder = 'textures', className, showTags = true }: Props) {
   const [isDragging, setIsDragging] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
   const [tags, setTags] = useState<string[]>([])
@@ -89,7 +90,12 @@ export function TextureUpload({ value, onChange, folder = 'textures', className 
           <p className='text-sm text-muted-foreground'>Uploading…</p>
         ) : previewUrl ? (
           <>
-            <img src={previewUrl} alt='texture preview' className='max-h-[120px] rounded object-contain' />
+          <img
+            src={previewUrl}
+            alt='texture preview'
+            className='max-h-[120px] rounded object-contain'
+            style={pixelPerfect ? { imageRendering: 'pixelated' } : undefined}
+          />
             <button
               type='button'
               onClick={(e) => { e.stopPropagation(); clear() }}
@@ -117,10 +123,12 @@ export function TextureUpload({ value, onChange, folder = 'textures', className 
             <input type='checkbox' checked={pixelPerfect} onChange={(e) => setPixelPerfect(e.target.checked)} />
             Pixel perfect
           </label>
-          <div>
-            <p className='mb-1 text-xs text-muted-foreground'>Tags (press Space to add)</p>
-            <TagInput value={tags} onChange={setTags} />
-          </div>
+          {showTags && (
+            <div>
+              <p className='mb-1 text-xs text-muted-foreground'>Tags (press Space to add)</p>
+              <TagInput value={tags} onChange={setTags} />
+            </div>
+          )}
         </div>
       )}
 

@@ -12,5 +12,6 @@ public class SlotDefinition : DefinitionBase
     public MirrorMode MirrorMode { get; set; }
     public AnimationMirrorMode AnimationMirrorMode { get; set; }
     public int ZIndex { get; set; }
+    public bool IsPaintable { get; set; }
     public List<Guid> CompatibleUvIds { get; set; } = new();
 }

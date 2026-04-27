@@ -14,6 +14,8 @@ import { RigAnimationEditorPage } from '@/pages/editors/rig-animation-editor-pag
 import { GraphEditorPage } from '@/pages/editors/graph-editor-page'
 import { QuestEditorPage } from '@/pages/editors/quest-editor-page'
 import { SlotsPage } from '@/pages/slots/slots-page'
+import { SkeletonsPage } from '@/pages/skeletons/skeletons-page'
+import { SkinsPage } from '@/pages/skins/skins-page'
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +77,14 @@ export const router = createBrowserRouter([
       {
         path: 'slots',
         element: <SlotsPage />
+      },
+      {
+        path: 'skeletons',
+        element: <SkeletonsPage />
+      },
+      {
+        path: 'skins',
+        element: <SkinsPage />
       }
     ]
   }

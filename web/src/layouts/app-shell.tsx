@@ -51,9 +51,9 @@ const navGroups: NavGroup[] = [
   {
     label: 'Rigging',
     items: [
-      { icon: Bone, label: 'Skeletons', to: '/definitions/skeleton' },
+      { icon: Bone, label: 'Skeletons', to: '/skeletons' },
       { icon: Layers, label: 'Slots', to: '/slots' },
-      { icon: Shirt, label: 'Skins', to: '/definitions/skin' },
+      { icon: Shirt, label: 'Skins', to: '/skins' },
       { icon: Play, label: 'Animations', to: '/definitions/animation' },
     ],
   },

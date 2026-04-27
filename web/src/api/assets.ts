@@ -8,7 +8,7 @@ export async function uploadAsset(file: File, options?: { folder?: string; isPub
   formData.append('isPublic', String(options?.isPublic ?? true))
 
   const { data } = await apiClient.post<AssetUploadResult>('/api/assets/upload', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
+    headers: { 'Content-Type': undefined }
   })
 
   return data
@@ -20,7 +20,7 @@ export async function replaceAsset(objectKey: string, file: File, isPublic = tru
   formData.append('isPublic', String(isPublic))
 
   const { data } = await apiClient.post<AssetUploadResult>(`/api/assets/replace/${objectKey}`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
+    headers: { 'Content-Type': undefined }
   })
 
   return data

@@ -43,6 +43,7 @@ const slotSchema = z.object({
   mirrorMode: z.enum(['None', 'MirrorPosition', 'FlipTexture', 'MirrorAndFlip']).default('None'),
   animationMirrorMode: z.enum(['None', 'Synchronized', 'ReverseFrame', 'OppositePhase']).default('None'),
   zIndex: z.number().int().default(0),
+  isPaintable: z.boolean().default(false),
   compatibleUvIds: z.array(z.object({ uvId: z.string() })).default([])
 })
 type SlotFormValues = z.infer<typeof slotSchema>
@@ -97,7 +98,7 @@ function DefinitionSearchDropdown({
         <ChevronDown className='h-4 w-4 text-muted-foreground' />
       </button>
       {open && (
-        <div className='absolute z-50 mt-1 w-full rounded-md border border-border bg-popover shadow-lg'>
+        <div className='absolute z-50 mt-1 w-full rounded-md border border-border bg-card shadow-lg'>
           <div className='p-2'>
             <Input autoFocus placeholder={searchPlaceholder} value={search} onChange={(e) => setSearch(e.target.value)} className='h-8 text-xs' />
           </div>
@@ -198,7 +199,7 @@ function SlotModal({ onClose, onCreated }: { onClose: () => void; onCreated: () 
 
   const { register, control, handleSubmit, formState: { errors } } = useForm<SlotFormValues>({
     resolver: zodResolver(slotSchema),
-    defaultValues: { skeletonId: '', type: 'Uv', localPositionX: 0, localPositionY: 0, mirrorMode: 'None', animationMirrorMode: 'None', zIndex: 0, compatibleUvIds: [] }
+    defaultValues: { skeletonId: '', type: 'Uv', localPositionX: 0, localPositionY: 0, mirrorMode: 'None', animationMirrorMode: 'None', zIndex: 0, isPaintable: false, compatibleUvIds: [] }
   })
 
   const { fields: uvFields, append: appendUv, remove: removeUv } = useFieldArray({ control, name: 'compatibleUvIds' })
@@ -214,6 +215,7 @@ function SlotModal({ onClose, onCreated }: { onClose: () => void; onCreated: () 
         mirrorMode: values.mirrorMode,
         animationMirrorMode: values.animationMirrorMode,
         zIndex: values.zIndex,
+        isPaintable: values.isPaintable,
         compatibleUvIds: uvFields.map((f) => f.uvId)
       }),
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['definitions'] }); onCreated() }
@@ -304,6 +306,14 @@ function SlotModal({ onClose, onCreated }: { onClose: () => void; onCreated: () 
           <div>
             <label className='mb-1 block text-sm font-medium'>Z-Index</label>
             <Input type='number' {...register('zIndex', { valueAsNumber: true })} />
+          </div>
+          <div>
+            <Controller control={control} name='isPaintable' render={({ field }) => (
+              <label className='flex cursor-pointer items-center gap-2 text-sm'>
+                <input type='checkbox' checked={field.value} onChange={(e) => field.onChange(e.target.checked)} className='h-4 w-4' />
+                <span>Paintable <span className='text-muted-foreground'>(pode ser pintado em runtime)</span></span>
+              </label>
+            )} />
           </div>
           <InlineUvPanel
             uvIds={uvFields.map((f) => f.uvId)}

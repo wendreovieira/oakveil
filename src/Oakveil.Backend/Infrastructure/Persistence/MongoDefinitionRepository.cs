@@ -26,11 +26,14 @@ public sealed class MongoDefinitionRepository : IDefinitionRepository
         var payload = ToDocument(payloadJson);
         EnsureAuditFields(payload, id, now, actor, created: true);
 
-        var key = payload.GetValue("Key", string.Empty).AsString;
+        var key = ReadKey(payload);
         if (string.IsNullOrWhiteSpace(key))
         {
             throw new InvalidOperationException("Payload must include a non-empty Key field.");
         }
+
+        // Normalize payload casing so downstream consumers can reliably read "Key".
+        payload["Key"] = key;
 
         var document = new BsonDocument
         {
@@ -90,11 +93,14 @@ public sealed class MongoDefinitionRepository : IDefinitionRepository
         var payload = ToDocument(payloadJson);
         EnsureAuditFields(payload, id, DateTime.UtcNow, actor, created: false, existing);
 
-        var key = payload.GetValue("Key", string.Empty).AsString;
+        var key = ReadKey(payload);
         if (string.IsNullOrWhiteSpace(key))
         {
             throw new InvalidOperationException("Payload must include a non-empty Key field.");
         }
+
+        // Normalize payload casing so downstream consumers can reliably read "Key".
+        payload["Key"] = key;
 
         var updated = new BsonDocument(existing)
         {
@@ -195,5 +201,20 @@ public sealed class MongoDefinitionRepository : IDefinitionRepository
             doc.GetValue("CreatedBy", BsonNull.Value).IsBsonNull ? null : doc["CreatedBy"].AsString,
             doc.GetValue("UpdatedBy", BsonNull.Value).IsBsonNull ? null : doc["UpdatedBy"].AsString,
             doc.GetValue("IsDeleted", false).ToBoolean());
+    }
+
+    private static string ReadKey(BsonDocument payload)
+    {
+        if (payload.TryGetValue("Key", out var key) && key.IsString)
+        {
+            return key.AsString;
+        }
+
+        if (payload.TryGetValue("key", out var lowerKey) && lowerKey.IsString)
+        {
+            return lowerKey.AsString;
+        }
+
+        return string.Empty;
     }
 }

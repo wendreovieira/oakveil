@@ -22,6 +22,7 @@ app.UseAuthorization();
 app.MapAuthEndpoints();
 app.MapAssetEndpoints();
 app.MapDefinitionEndpoints();
+app.MapSkinEndpoints();
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }))
     .AllowAnonymous();
