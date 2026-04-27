@@ -24,6 +24,7 @@ public static class ServiceCollectionExtensions
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
         services.Configure<S3Settings>(configuration.GetSection("S3Settings"));
+        services.Configure<SeedUserSettings>(configuration.GetSection("SeedUserSettings"));
 
         var mongoSettings = configuration.GetSection("MongoDbSettings").Get<MongoDbSettings>() ?? new MongoDbSettings();
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoSettings.ConnectionString));

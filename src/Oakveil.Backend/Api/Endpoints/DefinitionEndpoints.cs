@@ -28,7 +28,7 @@ public static class DefinitionEndpoints
                     DeleteAsync(ctx, sender, definitionType, id, ct))
                 .RequireAuthorization("EditorOrAdmin");
 
-            group.MapGet("/{id:guid}", (Guid id, bool includeDeleted, ISender sender, CancellationToken ct) =>
+            group.MapGet("/{id:guid}", (ISender sender, Guid id, bool includeDeleted = false, CancellationToken ct = default) =>
                     GetByIdAsync(sender, definitionType, id, includeDeleted, ct))
                 .RequireAuthorization("ViewerOrAbove");
 

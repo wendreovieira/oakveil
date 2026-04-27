@@ -8,6 +8,8 @@ builder.Services.AddBackendServices(builder.Configuration);
 
 var app = builder.Build();
 
+await app.Services.EnsureSeedUserAsync();
+
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -24,3 +26,5 @@ app.MapGet("/health", () => Results.Ok(new { status = "ok" }))
     .AllowAnonymous();
 
 app.Run();
+
+public partial class Program;

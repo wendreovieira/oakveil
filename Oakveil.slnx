@@ -8,4 +8,7 @@
     <Project Path="src/Oakveil.Shared/Oakveil.Shared.csproj" />
   </Folder>
   <Folder Name="/tests/" />
+  <Folder Name="/tests/Backend/">
+    <Project Path="tests/Oakveil.Backend.Tests/Oakveil.Backend.Tests.csproj" />
+  </Folder>
 </Solution>
