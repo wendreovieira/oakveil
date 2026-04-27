@@ -1,6 +1,24 @@
 namespace Oakveil.Shared.Enums;
 
-public class InteractionNodeType
+public enum InteractionNodeType
 {
-    
+    Dialogue,
+    Choice,
+    Branch,
+
+    StartQuest,
+    CompleteQuest,
+    GiveQuestRewards,
+
+    GiveItem,
+    TakeItem,
+
+    OpenVendor,
+    OpenBank,
+
+    Teleport,
+
+    TriggerInteraction,
+
+    End
 }

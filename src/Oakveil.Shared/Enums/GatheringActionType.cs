@@ -1,6 +1,9 @@
 namespace Oakveil.Shared.Enums;
 
-public class GatheringActionType
+public enum GatheringActionType
 {
-    
+    Mining,
+    Woodcutting,
+    Fishing,
+    Farming
 }

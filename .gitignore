@@ -1,0 +1,143 @@
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.tmp
+*.bak
+*.orig
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# .NET / C#
+# =========================
+bin/
+obj/
+TestResults/
+*.rsuser
+
+# Rider / Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+.nuget/
+
+# =========================
+# MonoGame / MGCB
+# =========================
+*.mgstats
+*.mgo
+*.mgcontent
+*.xnb
+
+# MonoGame generated content
+Content/bin/
+Content/obj/
+
+# MGCB Editor temp
+*.mgcb-editor
+*.mgcb-editor-settings
+
+# =========================
+# Frontend / Node
+# =========================
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.out/
+.vercel/
+.cache/
+.parcel-cache/
+.vite/
+coverage/
+
+# lock files opcionais (descomente se quiser ignorar)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# =========================
+# Database / local dev
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Generated assets
+# =========================
+wwwroot/generated/
+generated/
+exports/
+temp/
+tmp/
+cache/
+
+# Atlas gerados em build/debug
+*.atlas
+*.atlasmeta
+
+# =========================
+# Art tools
+# =========================
+# arquivos temporários do Aseprite
+*.aseprite-temp
+
+# Photoshop temp
+~$*.psd
+
+# =========================
+# Tests / Coverage
+# =========================
+coverage/
+*.coverage
+*.coveragexml
+
+# =========================
+# Publish
+# =========================
+publish/
+artifacts/
+
+# =========================
+# Secrets
+# =========================
+secrets.json
+appsettings.Development.json
+appsettings.Local.json

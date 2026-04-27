@@ -1,6 +1,7 @@
 namespace Oakveil.Shared.Models;
 
-public class SpriteRef
+public sealed class SpriteRef
 {
-    
+    public required string Atlas { get; set; }
+    public required string Key { get; set; }
 }

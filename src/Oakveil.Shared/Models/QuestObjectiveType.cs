@@ -1,6 +1,12 @@
-namespace Oakveil.Shared.Models;
+namespace Oakveil.Shared.Enums;
 
-public class QuestObjectiveType
+public enum QuestObjectiveType
 {
-    
+    TalkToNpc,
+    KillEnemy,
+    CollectItem,
+    InteractWithObject,
+    ReachLocation,
+    EquipItem,
+    GainSkillLevel
 }

@@ -1,8 +1,8 @@
 namespace Oakveil.Shared.Models;
 
-public sealed class InteractionEntryPoint
+public sealed class InteractionBranchOption
 {
-    public required string NodeId { get; set; }
+    public required string NextNodeId { get; set; }
 
     public int Priority { get; set; }
 

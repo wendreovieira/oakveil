@@ -1,6 +1,8 @@
 namespace Oakveil.Shared.Enums;
 
-public class SlotType
+public enum SlotType
 {
-    
+    Uv,
+    PixelTransform,
+    Transform
 }
