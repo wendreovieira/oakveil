@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 16% 8%;
+  --foreground: 40 13% 90%;
+  --card: 218 18% 11%;
+  --card-foreground: 40 13% 90%;
+  --primary: 177 74% 40%;
+  --primary-foreground: 210 16% 8%;
+  --secondary: 26 45% 47%;
+  --secondary-foreground: 34 70% 96%;
+  --muted: 214 14% 18%;
+  --muted-foreground: 213 9% 64%;
+  --accent: 353 55% 46%;
+  --accent-foreground: 350 80% 97%;
+  --destructive: 2 78% 62%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 210 14% 22%;
+  --input: 210 14% 18%;
+  --ring: 177 74% 40%;
+  --radius: 0.8rem;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Space Grotesk', 'Sora', 'Segoe UI', sans-serif;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(35, 149, 140, 0.2), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(219, 118, 55, 0.18), transparent 38%),
+    radial-gradient(circle at 50% 80%, rgba(170, 44, 78, 0.18), transparent 35%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.editor-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
