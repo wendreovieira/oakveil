@@ -15,6 +15,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+app.UseCors("FrontendCors");
 app.UseAuthentication();
 app.UseAuthorization();
 

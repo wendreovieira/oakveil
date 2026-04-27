@@ -72,6 +72,25 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ViewerOrAbove", p => p.RequireRole("Admin", "Editor", "Viewer"));
         });
 
+        services.AddCors(options =>
+        {
+            options.AddPolicy("FrontendCors", policy =>
+            {
+                var allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+                    ??
+                    [
+                        "http://localhost:5173",
+                        "http://127.0.0.1:5173",
+                        "http://localhost:4173",
+                        "http://127.0.0.1:4173"
+                    ];
+
+                policy.WithOrigins(allowedOrigins)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>
         {
